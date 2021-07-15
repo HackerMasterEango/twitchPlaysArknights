@@ -1,0 +1,15 @@
+{
+  "name": "codes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "twitchPlaysArknights.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "robotjs": "^0.6.0",
+    "tmi.js": "^1.8.3"
+  }
+}
