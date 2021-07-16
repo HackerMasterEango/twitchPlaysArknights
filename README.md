@@ -6,7 +6,10 @@ twitch chat plays arknights
 npm i
 
 to run program
-./twitchPlaysArknights.js eango_ 5-11.json
+./twitchPlaysArknights.js eango_ stages/5-10.json
+
+
+above command lets chat play stage 5-10 and listens to twitch.tv/eango_ chat room
 
 # how chat plays
 have "battle-ship like" map overlay and here is what chatters can write
