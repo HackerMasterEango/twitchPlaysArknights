@@ -2,8 +2,11 @@ const arknightsAutomationFn = require('./arknightsAutomation')
 const tmi = require('tmi.js');
 const { parse } = require('./parser');
 
+
+
+
 const client = new tmi.Client({
-	channels: [ 'eango_' ]
+	channels: [ process.argv[2] ]
 });
 
 client.connect();

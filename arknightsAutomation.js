@@ -1,69 +1,62 @@
 // Move the mouse across the screen as a sine wave.
 const robot = require("robotjs")
-const map = require('./5-11.json');
+const map = require(process.argv[3]);
 const { DOWN, RIGHT, UP, LEFT } = require("./operatorDirectionEnum");
 const operatorPositions = require('./operatorPositions')
 
+
 const deployOperator = (opNumber, placementTile, opDirection) => {
-    // Ensure placement tile is valid.
-    if (placementTile.length != 2) { return }
-
     const [ column, row ] = placementTile
-
     // Ensure valid row column entered before processing.
-    if (!map[column][row]) { return }
-     
-      // Speed up the mouse.
-      robot.setMouseDelay(200)
-      const [ x, y ] = map[column][row];
+    if (!map[column] || !map[column][row]) { return }
 
-      robot.moveMouse(...operatorPositions[opNumber]);
-      robot.mouseToggle("down");
+    robot.setMouseDelay(200)
+    robot.moveMouse(...operatorPositions[opNumber])
+    robot.mouseToggle("down")
 
-      // Get appropriate offset based off the column letter. This is cringe actually.
-      const xOffset = {
-          'a': 165,
-          'b': 165,
-          'c': 150,
-          'd': 100,
-          'e': 100,
-          'f': 100,
-          'g': 100
-      }[[column]] || 0
+    const [ x, y ] = map[column][row]
 
-      robot.dragMouse(x + xOffset, y + 50);
-      robot.mouseToggle("up");
-  
-      // move operator correct orientation
-      robot.mouseToggle("down")
-      const mouse = robot.getMousePos();
-      switch (opDirection) {
-        case DOWN:
-            robot.dragMouse(mouse.x, mouse.y+200)
-            break
-        case RIGHT:
-            robot.dragMouse(mouse.x+400, mouse.y)
-            break
-        case UP:
-            robot.dragMouse(mouse.x, mouse.y-200)
-            break
-        case LEFT:
-            robot.dragMouse(mouse.x-200, mouse.y)
-            break
-      }
+    // Get appropriate offset based off the column letter. This is cringe actually.
+    const xOffset = {
+        'a': 165,
+        'b': 165,
+        'c': 150,
+        'd': 100,
+        'e': 100,
+        'f': 100,
+        'g': 100,
+        'h': 100
+    }[[column]] || 0
 
-      robot.mouseToggle("up");
+    robot.dragMouse(x + xOffset, y + map["yOffset"])
+    robot.mouseToggle("up")
+
+    // move operator correct orientation
+    robot.mouseToggle("down")
+    const mouse = robot.getMousePos()
+    switch (opDirection) {
+    case DOWN:
+        robot.dragMouse(mouse.x, mouse.y+300)
+        break
+    case RIGHT:
+        robot.dragMouse(mouse.x+300, mouse.y)
+        break
+    case UP:
+        robot.dragMouse(mouse.x, mouse.y-300)
+        break
+    case LEFT:
+        robot.dragMouse(mouse.x-300, mouse.y)
+        break
+    }
+
+    robot.mouseToggle("up");
 }
 
 const activateOperator = placementTile => {
-    // Ensure placement tile is valid.
-    if (placementTile.length != 2) { return }
-
     const [ column, row ] = placementTile
-
     // Ensure valid row column entered before processing.
-    if (!map[column][row]) { return }
-
+    if (!map[column] || !map[column][row]) { return }
+      
     robot.setMouseDelay(200)
     // Click operator
     robot.moveMouse(...map[column][row]);
@@ -79,13 +72,9 @@ const activateOperator = placementTile => {
 }
 
 const undeployOperator = placementTile => {
-    // Ensure placement tile is valid.
-    if (placementTile.length != 2) { return }
-
     const [ column, row ] = placementTile
-
     // Ensure valid row column entered before processing.
-    if (!map[column][row]) { return }
+    if (!map[column] || !map[column][row]) { return }
 
     robot.setMouseDelay(200)
 
