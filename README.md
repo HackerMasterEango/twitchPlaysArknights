@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Twitch Chat Plays Arknights Desktop App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This application allows a twitch chat to play the game arknights. Inspired by infamous "twitch plays" streams I decided to make a twitch plays for arknights.
 
-## Available Scripts
+Arknights is a popular mobile tower defense game. Learn about Arknights here: https://www.arknights.global/
 
-In the project directory, you can run:
+# How to use as a streamer
 
-### `npm start`
+If you're a streamer and want to give this a go with your community do this:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Just install the app unzip, and run
+2. Make sure when picking the map you want to play to insert your twitch username
+3. Use the map overlays I provided in the mapOverlays folder on your obs scene, or make your own overlay.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# How to debug locally
 
-### `npm test`
+If you want to contribute adding more maps or just fix some of this bad code do the following
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. git clone https://github.com/HackerMasterEango/twitchPlaysArknights
+2. npm i
 
-### `npm run build`
+IMPORTANT DEVELOPMENT NOTE: robotjs and electron packages seem to not get along well when instantiating a child process from electron.
+If running the full electron app you may need to run the following for it to work
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. ./node_modules/.bin/electron-rebuild
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If wanting to debug the robotjs application locally and getting errors you will need to delete the node_modules folder and reinstall robotjs (or just all packages)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. rm -rf node_modules
+2. npm i
